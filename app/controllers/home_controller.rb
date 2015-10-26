@@ -3,5 +3,10 @@ class HomeController < ApplicationController
   end
 
   def submission
+    data = params[:xml_submission_file]
+
+    puts '!----------@@----------!'
+    puts data
+    puts '!----------@@----------!'
   end
 end
