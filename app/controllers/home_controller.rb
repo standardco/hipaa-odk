@@ -33,4 +33,9 @@ class HomeController < ApplicationController
     @response = truevault.show_document(ENV['TV_TEST_VAULT'], params[:id])
   end
 
+  def forms
+    render :content_type => "text/xml"
+
+  end
+
 end
