@@ -103,6 +103,12 @@ module TrueVault
       options[:query] = { "document" => document}
       request :post, create_document_path(vault_id), options
     end
+    
+    def create_document_with_schema(vault_id, document, schema_id, options = {})
+      document = hash_to_base64_json(document)
+      options[:query] = { document: document, schema_id: schema_id }
+      request :post, create_document_path(vault_id), options
+    end
 
     def update_document(vault_id, document_id, document, options = {})
       document = hash_to_base64_json(document)
@@ -157,6 +163,12 @@ module TrueVault
       search_option = hash_to_base64_json(search_option)
       options[:query] = { "search_option" => search_option }
       request :post, user_search_path, options
+    end
+    
+    def search_documents(vault_id, search_option, options = {})
+      search_option = hash_to_base64_json(search_option)
+      options[:query] = { "search_option" => search_option }
+      request :post, search_documents_path(vault_id), options
     end
 
     def list_users
@@ -223,6 +235,10 @@ module TrueVault
 
     def update_users_path(user_id)
       "/#{TRUEVAULT_API_VERSION}/users/#{user_id}"
+    end
+    
+    def search_documents_path(vault_id)
+      "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/search"
     end
 
     def default_options
