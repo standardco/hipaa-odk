@@ -71,56 +71,64 @@ module TrueVault
     def create_user(username, password, options = {})
       attributes = { email: "#{username}" }
       attributes = hash_to_base64_json(attributes)
-      options[:query] = { "username" => username,
-   	   						"password" => password, "attributes" => attributes }
-
+      options[:query] = {
+        "username" => username,
+        "password" => password,
+        "attributes" => attributes
+      }
    	  request :post, users_path, options
     end
 
     def update_user_password(user_id, password, options = {})
       options[:query] = { "password" => password }
-
       request :put, update_users_path(user_id), options
     end
 
     # Currently being used to set email as an attribute
-    # This will update a user not their documents(which contains all their info)
+    # This will update a user not their documents (which contains all their info)
     def update_user_attr(user_id, email, options = {})
       attributes = { email: "#{email}" }
       attributes = hash_to_base64_json(attributes)
       options[:query] = { "attributes" => attributes }
-
       request :put, update_users_path(user_id), options
     end
 
     def create_vault(vault_name, options = {})
-
       options[:query] = { "name" => vault_name}
-
       request :post, create_vault_path, options
     end
 
     def create_document(vault_id, document, options = {})
       document = hash_to_base64_json(document)
       options[:query] = { "document" => document}
-
       request :post, create_document_path(vault_id), options
     end
 
     def update_document(vault_id, document_id, document, options = {})
       document = hash_to_base64_json(document)
       options[:query] = { "document" => document}
-
       request :put, update_document_path(vault_id, document_id), options
+    end
+    
+    def create_schema(vault_id, schema, options = {})
+      schema = hash_to_base64_json(schema)
+      options[:query] = { 'schema': schema }
+      request :post, create_schema_path(vault_id), options
+    end
+    
+    def update_schema(vault_id, schema_id, schema, options = {})
+      schema = hash_to_base64_json(schema)
+      options[:query] = { 'schema': schema }
+      request :put, update_schema_path(vault_id, schema_id), options
     end
 
     def login(username, password, options = {})
-   	   options[:query] = { "username" => username,
-   	   						"password" => password,
-   	   						"account_id" => TRUEVAULT_ACCOUNT_ID}
-
-   	   request :post, login_path, options
-
+   	   options[:query] = {
+        "username" => username,
+        "password" => password,
+        "account_id" => TRUEVAULT_ACCOUNT_ID
+      }
+      request :post, login_path, options
     end
 
     def destroy(id, options = {})
@@ -134,7 +142,6 @@ module TrueVault
     def create_user_schema(schema, options = {})
       schema = hash_to_base64_json(schema)
       options[:query] = { "schema" => schema }
-
       request :post, user_schema_path, options
     end
 
@@ -149,7 +156,6 @@ module TrueVault
     def user_search(search_option, options = {})
       search_option = hash_to_base64_json(search_option)
       options[:query] = { "search_option" => search_option }
-
       request :post, user_search_path, options
     end
 
@@ -196,11 +202,19 @@ module TrueVault
     end
 
     def create_document_path(vault_id, document_id = '')
-        "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/documents"
+      "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/documents"
     end
 
     def update_document_path(vault_id, document_id)
-        "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/documents/#{document_id}"
+      "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/documents/#{document_id}"
+    end
+    
+    def create_schema_path(vault_id)
+      "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/schemas"
+    end
+    
+    def update_schema_path(vault_id, schema_id)
+      "/#{TRUEVAULT_API_VERSION}/vaults/#{vault_id}/schemas/#{vault_id}"
     end
 
     def users_path
