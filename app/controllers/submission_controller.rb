@@ -10,26 +10,10 @@ class SubmissionController < ApplicationController
 
     xml = File.open(data.open).read
 
-    data_string = Hash.from_xml(xml).to_s
-
     puts '!-----@@-----!'
-    # pg_data = hash["data"]
+    puts xml.class
 
-    Form.create(data: data_string)
-    # Form.create(data_two: pg_data)
-    # tv_data = hash["data"]
-    #
-    # identifiers.each do |i|
-    #   tv_data = tv_data.dup.except!("#{i}")
-    # end
-    #
-    # non_identifiers.each do |i|
-    #   pg_data = pg_data.dup.except!("#{i}")
-    # end
-    #
-    # puts '!-----@@-----!'
-    #
-    # response = truevault.create_document(ENV['TV_TEST_VAULT'], tv_data)
+    Form.create(data: xml)
 
     render nothing: true
   end

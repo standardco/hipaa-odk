@@ -69,4 +69,4 @@ gem 'json'
 gem 'httparty'
 gem 'httmultiparty'
 
-gem 'pgcrypto'
+gem 'pgcrypto', :git => 'https://github.com/codeisstandard/pgcrypto.git'
