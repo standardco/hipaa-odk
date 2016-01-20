@@ -68,3 +68,5 @@ gem 'json'
 
 gem 'httparty'
 gem 'httmultiparty'
+
+gem 'pgcrypto'

@@ -4,8 +4,11 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
-  database: sdk_prototype_dev
+  adapter: pgcrypto
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default

@@ -5,15 +5,18 @@ class SubmissionController < ApplicationController
     # non_identifiers = ["left_eye_tf", "right_eye_tf"]
     #
     # truevault = ::TrueVault::Client.new
-    #
-    # data = params[:xml_submission_file]
-    #
-    # xml = File.open(data.open).read
-    #
-    # hash = Hash.from_xml(xml)
-    #
-    # puts '!-----@@-----!'
+
+    data = params[:xml_submission_file]
+
+    xml = File.open(data.open).read
+
+    data_string = Hash.from_xml(xml).to_s
+
+    puts '!-----@@-----!'
     # pg_data = hash["data"]
+
+    Form.create(data: data_string)
+    # Form.create(data_two: pg_data)
     # tv_data = hash["data"]
     #
     # identifiers.each do |i|

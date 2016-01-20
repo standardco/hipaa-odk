@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-
+    @data = Form.first
   end
 
   def forms
