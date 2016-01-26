@@ -1,13 +1,28 @@
-<forms>
-<form url="https://opendatakit.appspot.com/formXml?formId=CascadingSelect">Cascading Select Form</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=widgets">Widgets</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=NewWidgets">New Widgets</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=sample">sample</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=Miramare">Miramare</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=Birds">Birds</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=Forest_1">Forest Plot Survey</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=geo_tagger_v2">Geo Tagger v2</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=hypertension">Hypertension Screening</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=imci">eIMCI by D-Tree</form>
-<form url="https://opendatakit.appspot.com/formXml?formId=CascadingTripleSelect">Cascading Triple Select Form</form>
-</forms>
+<!-- SCM - This is the required format for ODK Collect/OpenRosa Form List -->
+<xforms xmlns="http://openrosa.org/xforms/xformsList">
+  <xform>
+    <name>Cascading Select Form</name>
+    <formID>CascadingSelect</formID>
+    <version>2012072302</version>
+    <hash>md5:d4750440f463f31ba1de0b918d3a5582</hash>
+    <downloadUrl>https://raw.githubusercontent.com/digidem-test/xform-test/master/forms/CascadingSelect/form.xml</downloadUrl>
+  </xform>
+  <xform>
+    <name>Birds</name>
+    <formID>Birds</formID>
+    <hash>md5:357c5e3c8ab47e08b40b31869d70f490</hash>
+    <downloadUrl>https://raw.githubusercontent.com/digidem-test/xform-test/master/forms/birds/form.xml</downloadUrl>
+  </xform>
+  <xform>
+    <name>Geo Tagger v2</name>
+    <formID>geo_tagger_v2</formID>
+    <hash>md5:54cf4c55662db1d2902a99b7b5b54727</hash>
+    <downloadUrl>https://raw.githubusercontent.com/digidem-test/xform-test/master/forms/geo_tagger_v2/form.xml</downloadUrl>
+  </xform>
+  <xform>
+    <name>Widgets</name>
+    <formID>widgets</formID>
+    <hash>md5:c4373414128370bd9e8affbf9868ffda</hash>
+    <downloadUrl>https://raw.githubusercontent.com/digidem-test/xform-test/master/forms/widgets/form.xml</downloadUrl>
+  </xform>
+</xforms>
